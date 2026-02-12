@@ -36,20 +36,11 @@ src/
 
 **구조:**
 
-```mermaid
-classDiagram
-    %% 인터페이스 정의
-    class Strategy {
-        <<interface>>
-    }
-
-    %% Context와 Strategy의 관계 (has-a)
-    Context --> Strategy : has-a
-
-    %% 구현 클래스들의 상속(구현) 관계
-    Strategy <|-- ConcreteA
-    Strategy <|-- ConcreteB
-    Strategy <|-- ConcreteC
+```
+Context ──has-a──▶ <<interface>> Strategy
+                        ▲
+              ┌─────────┼─────────┐
+        ConcreteA   ConcreteB   ConcreteC
 ```
 
 **구성 요소:**
@@ -88,25 +79,11 @@ classDiagram
 
 **구조:**
 
-```mermaid
-    classDiagram
-        class Client {
-            +doWork(subject: Subject)
-        }
-        class Subject {
-            <<interface>>
-            +request()
-        }
-        class Proxy {
-            +request()
-        }
-        class RealSubject {
-            +request()
-        }
-        Client --> Subject
-        Proxy --> RealSubject
-        RealSubject --|> Subject
-        Proxy --|> Subject
+```
+Client ──▶ <<interface>> Subject
+                 ▲
+           ┌─────┴─────┐
+         Proxy ──▶ RealSubject
 ```
 
 **구성 요소:**
